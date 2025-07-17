@@ -2,8 +2,8 @@ name: Daily Weather ETL
 
 on:
   schedule:
-    - cron: "0 4 * * *"  # Runs daily at 4:00 AM UTC (9:30 AM IST)
-  workflow_dispatch:     # Allows manual trigger from GitHub UI
+    - cron: "0 4 * * *"
+  workflow_dispatch:
 
 jobs:
   run-etl:
@@ -21,6 +21,14 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
+
+      - name: Debug print environment variables
+        run: |
+          echo "POSTGRES_HOST: $POSTGRES_HOST"
+          echo "POSTGRES_PORT: $POSTGRES_PORT"
+        env:
+          POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+          POSTGRES_PORT: ${{ secrets.POSTGRES_PORT }}
 
       - name: Run ETL script
         env:
