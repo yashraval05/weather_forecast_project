@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+tensorflow-cpu==2.12
+pydantic
+psycopg2-binary
+python-dotenv
+requests

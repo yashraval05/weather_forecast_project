@@ -1,0 +1,4 @@
+host db.tskjdwgwanvthycebdiw.supabase.co
+port 5432
+database postgres
+user postgres
